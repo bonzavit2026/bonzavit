@@ -36,7 +36,7 @@
       overflow: hidden;
     }
 
-    /* MARKA ALANI */
+    /* MARKA */
     .brand {
       position: relative;
       display: inline-block;
@@ -56,12 +56,7 @@
       animation-delay: 0.3s;
     }
 
-    /*
-      İnce yaprak/filiz çizgileri.
-      Emoji yerine CSS kullanıldığı için renkleri
-      gerçekten yeşilden turuncuya dönüşebilir.
-    */
-
+    /* SADE YAPRAK/FİLİZLER */
     .sprout {
       position: absolute;
       width: 42px;
@@ -126,14 +121,9 @@
       animation-delay: 1.5s;
     }
 
-    /* Yeşil → turuncu */
     .brand.orange .sprout::before,
     .brand.orange .sprout::after {
       border-color: #e87924;
-    }
-
-    .brand.orange .sprout {
-      transition: color 1.5s ease;
     }
 
     @keyframes logoIn {
@@ -154,23 +144,7 @@
       }
     }
 
-    /* RENK DÖNÜŞÜMÜ */
-    .brand.orange {
-      animation: orangeStart 1.5s ease forwards;
-      animation-delay: 2.2s;
-    }
-
-    @keyframes orangeStart {
-      from {
-        filter: none;
-      }
-
-      to {
-        filter: none;
-      }
-    }
-
-    /* AYIRICI */
+    /* ÇİZGİ */
     .line {
       width: 0;
       height: 3px;
@@ -198,15 +172,23 @@
       animation-delay: 2.1s;
     }
 
-    /* MESAJ */
-    .message {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #536657;
-      margin-bottom: 28px;
+    /* DOĞUM GÜNÜ MESAJI */
+    .message-box {
+      margin-top: 20px;
+      padding: 22px 20px;
+      border-radius: 20px;
+      background: #f8fbf6;
+      border: 1px solid rgba(123, 191, 98, 0.25);
       opacity: 0;
+      transform: translateY(12px);
       animation: textIn 1s ease forwards;
       animation-delay: 2.4s;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #536657;
     }
 
     /* SLOGAN */
@@ -215,7 +197,7 @@
       line-height: 1.4;
       font-weight: 900;
       color: #e87924;
-      margin-top: 28px;
+      margin-top: 30px;
       opacity: 0;
       transform: scale(0.94);
       animation: sloganIn 1.2s ease forwards;
@@ -246,13 +228,25 @@
       }
     }
 
-    .footer {
+    /* FİNAL */
+    .final {
       margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid #edf1eb;
       font-size: 13px;
       color: #8b968c;
       opacity: 0;
       animation: textIn 1s ease forwards;
       animation-delay: 3.4s;
+    }
+
+    .mini-logo {
+      display: block;
+      margin-top: 7px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #e87924;
     }
   </style>
 </head>
@@ -280,28 +274,29 @@
       Yeni yaşın kutlu olsun!
     </h1>
 
-    <p class="message">
-      Yeni yaşında sağlık, mutluluk, enerji
-      ve birbirinden güzel anılar seninle olsun.
-      Her yeni gün sana yepyeni bir güzellik getirsin.
-    </p>
+    <div class="message-box">
+
+      <p class="message">
+        Yeni yaşında sağlık, mutluluk, enerji
+        ve birbirinden güzel anılar seninle olsun.
+        Her yeni gün sana yepyeni bir güzellik getirsin.
+      </p>
+
+    </div>
 
     <div class="slogan">
       DAHA FAZLA ENERJİ,<br>
       DAHA İYİ BİR SEN :D
     </div>
 
-    <div class="footer">
+    <div class="final">
       Sana özel hazırlanmıştır.
+      <span class="mini-logo">BONZAVİT</span>
     </div>
 
   </div>
 
   <script>
-    /*
-      Yaprakların yeşilden turuncuya dönüşmesini
-      animasyonun sonunda başlatıyoruz.
-    */
     setTimeout(function () {
       document.getElementById("brand").classList.add("orange");
     }, 2200);
