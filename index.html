@@ -29,9 +29,7 @@
       overflow-x: hidden;
     }
 
-    /* =========================
-       KARŞILAMA / REKLAM EKRANI
-       ========================= */
+    /* KARŞILAMA */
 
     .intro {
       position: fixed;
@@ -73,9 +71,10 @@
     }
 
     .intro-text {
-      color: #285c34;
-      font-size: 15px;
-      font-weight: 600;
+      color: #e87924;
+      font-size: clamp(18px, 5vw, 24px);
+      line-height: 1.4;
+      font-weight: 900;
       opacity: 0;
       transform: translateY(8px);
       animation: introTextIn 0.8s ease forwards;
@@ -109,9 +108,7 @@
       }
     }
 
-    /* =========================
-       ANA KART
-       ========================= */
+    /* ANA KART */
 
     .card {
       width: 100%;
@@ -136,9 +133,7 @@
       }
     }
 
-    /* =========================
-       MARKA
-       ========================= */
+    /* MARKA */
 
     .brand {
       position: relative;
@@ -160,9 +155,7 @@
       animation-delay: 2.8s;
     }
 
-    /* =========================
-       FİLİZLER
-       ========================= */
+    /* FİLİZLER */
 
     .sprout {
       position: absolute;
@@ -231,8 +224,6 @@
       animation-delay: 3.9s;
     }
 
-    /* Turuncuya geçiş */
-
     .brand.orange .sprout::before,
     .brand.orange .sprout::after {
       border-color: #e87924;
@@ -286,9 +277,7 @@
       }
     }
 
-    /* =========================
-       ÇİZGİ
-       ========================= */
+    /* ÇİZGİ */
 
     .line {
       width: 0;
@@ -307,9 +296,7 @@
       }
     }
 
-    /* =========================
-       BAŞLIK
-       ========================= */
+    /* BAŞLIK */
 
     h1 {
       font-size: clamp(26px, 7vw, 32px);
@@ -323,9 +310,7 @@
       animation-delay: 4.5s;
     }
 
-    /* =========================
-       MESAJ KUTUSU
-       ========================= */
+    /* MESAJ KUTUSU */
 
     .message-box {
       margin-top: 20px;
@@ -348,9 +333,7 @@
       margin-bottom: 18px;
     }
 
-    /* =========================
-       MESAJI OKU BUTONU
-       ========================= */
+    /* MESAJI OKU */
 
     .read-button {
       border: none;
@@ -377,9 +360,7 @@
       transform: scale(0.96);
     }
 
-    /* =========================
-       UZUN MESAJ
-       ========================= */
+    /* UZUN MESAJ */
 
     .long-message {
       display: none;
@@ -415,9 +396,7 @@
       }
     }
 
-    /* =========================
-       SLOGAN
-       ========================= */
+    /* SLOGAN */
 
     .slogan {
       font-size: clamp(19px, 5vw, 23px);
@@ -450,9 +429,7 @@
       }
     }
 
-    /* =========================
-       FİNAL
-       ========================= */
+    /* FİNAL */
 
     .final {
       margin-top: 30px;
@@ -496,9 +473,7 @@
       }
     }
 
-    /* =========================
-       TELEFON UYUMLULUĞU
-       ========================= */
+    /* TELEFON UYUMLULUĞU */
 
     @media (max-width: 420px) {
       body {
@@ -524,9 +499,7 @@
 
 <body>
 
-  <!-- =========================
-       KARŞILAMA
-       ========================= -->
+  <!-- KARŞILAMA -->
 
   <div class="intro" id="intro">
 
@@ -539,7 +512,8 @@
       <div class="intro-line"></div>
 
       <div class="intro-text">
-        Enerjini yenile.
+        DAHA FAZLA ENERJİ,<br>
+        DAHA İYİ BİR SEN :D
       </div>
 
     </div>
@@ -547,9 +521,7 @@
   </div>
 
 
-  <!-- =========================
-       ANA SAYFA
-       ========================= -->
+  <!-- ANA SAYFA -->
 
   <div class="card">
 
@@ -599,7 +571,7 @@
         </p>
 
         <p>
-          Elbette, aynı gemide birbirinden farklı üç hayat olsa da yer yer kesiştiğimiz ve kavuştuğumuz bu yolda iyi ki de denk gelmişiz demesi bizim için fazla mı duygusaldır bilemem. Ama iki böcekten, bir çiçekten oluşmuş dostluğun şu 4 yıllık boyunca yaçıyor, yaşatıyor olmamız benim için çok değerli. Eminim sizler için de öyle. Bazen sessizlikler olsa da eskilerin gürültüsü hâlâ kulaklarımda yankılanmakta.
+          Elbette, aynı gemide birbirinden farklı üç hayat olsa da yer yer kesiştiğimiz ve kavuştuğumuz bu yolda iyi ki de denk gelmişiz demesi bizim için fazla mı duygusaldır bilemem. Ama iki böcekten, bir çiçekten oluşmuş dostluğun şu 4 yıllık boyunca yaşıyor, yaşatıyor olmamız benim için çok değerli. Eminim sizler için de öyle. Bazen sessizlikler olsa da eskilerin gürültüsü hâlâ kulaklarımda yankılanmakta.
         </p>
 
         <p>
@@ -630,18 +602,9 @@
   </div>
 
 
-  <!-- =========================
-       JAVASCRIPT
-       ========================= -->
+  <!-- JAVASCRIPT -->
 
   <script>
-
-    /*
-     * YEŞİL FİLİZLERİ TURUNCUYA ÇEVİR
-     *
-     * Sayfa açıldıktan sonra filizler görünür.
-     * Bir süre sonra .orange sınıfı eklenir.
-     */
 
     window.addEventListener("load", function () {
 
@@ -653,10 +616,6 @@
 
     });
 
-
-    /*
-     * MESAJI AÇ / KAPAT
-     */
 
     function openMessage() {
 
