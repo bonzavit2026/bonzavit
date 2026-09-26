@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>BONZAVİT | Sana Özel</title>
 
   <style>
@@ -15,81 +16,195 @@
 
     body {
       font-family: Arial, sans-serif;
+      min-height: 100vh;
       background: linear-gradient(135deg, #f7fff4, #fff8ed);
       color: #23452b;
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 25px;
+      overflow-x: hidden;
     }
 
     .card {
       width: 100%;
-      max-width: 520px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 28px;
+      max-width: 540px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 30px;
       padding: 45px 28px;
       text-align: center;
-      box-shadow: 0 15px 45px rgba(45, 85, 50, 0.15);
+      box-shadow: 0 18px 50px rgba(45, 85, 50, 0.16);
       overflow: hidden;
     }
 
+    /* LOGO */
     .logo {
-      font-size: 42px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: clamp(36px, 10vw, 48px);
+      font-weight: 900;
+      letter-spacing: 3px;
       color: #e87924;
-      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: logoIn 1s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    /* YAPRAKLAR */
+    .leaves {
+      height: 65px;
+      position: relative;
+      margin-bottom: 8px;
     }
 
     .leaf {
-      font-size: 42px;
-      display: inline-block;
-      animation: grow 2s ease-in-out infinite alternate;
+      position: absolute;
+      font-size: 34px;
+      opacity: 0;
+      color: #72b85c;
+      animation:
+        leafAppear 1s ease forwards,
+        leafColor 2.5s ease forwards;
     }
 
-    @keyframes grow {
+    .leaf:nth-child(1) {
+      left: 20%;
+      top: 25px;
+      transform: rotate(-25deg);
+      animation-delay: 0.7s, 2s;
+    }
+
+    .leaf:nth-child(2) {
+      left: 37%;
+      top: 5px;
+      transform: rotate(-8deg);
+      animation-delay: 0.9s, 2.2s;
+    }
+
+    .leaf:nth-child(3) {
+      right: 37%;
+      top: 5px;
+      transform: rotate(8deg);
+      animation-delay: 1.1s, 2.4s;
+    }
+
+    .leaf:nth-child(4) {
+      right: 20%;
+      top: 25px;
+      transform: rotate(25deg);
+      animation-delay: 1.3s, 2.6s;
+    }
+
+    @keyframes leafAppear {
       from {
-        transform: scale(0.9) rotate(-5deg);
+        opacity: 0;
+        transform: scale(0.2) translateY(15px) rotate(0deg);
       }
+
       to {
-        transform: scale(1.1) rotate(5deg);
+        opacity: 1;
       }
     }
 
-    h1 {
-      font-size: 30px;
-      margin: 18px 0 12px;
-      color: #285c34;
+    @keyframes leafColor {
+      from {
+        color: #72b85c;
+      }
+
+      to {
+        color: #e87924;
+      }
     }
 
+    @keyframes logoIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* AYIRICI ÇİZGİ */
+    .line {
+      width: 0;
+      height: 4px;
+      background: #7bbf62;
+      border-radius: 10px;
+      margin: 20px auto;
+      animation: lineGrow 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes lineGrow {
+      to {
+        width: 85px;
+      }
+    }
+
+    /* BAŞLIK */
+    h1 {
+      font-size: clamp(26px, 7vw, 32px);
+      color: #285c34;
+      margin: 18px 0 12px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: textIn 1s ease forwards;
+      animation-delay: 1.8s;
+    }
+
+    /* MESAJ */
     .message {
       font-size: 17px;
       line-height: 1.7;
       color: #536657;
       margin-bottom: 28px;
+      opacity: 0;
+      animation: textIn 1s ease forwards;
+      animation-delay: 2.1s;
     }
 
+    /* SLOGAN */
     .slogan {
-      font-size: 21px;
-      font-weight: bold;
+      font-size: clamp(19px, 5vw, 23px);
+      line-height: 1.4;
+      font-weight: 900;
       color: #e87924;
-      margin-top: 25px;
+      margin-top: 28px;
+      opacity: 0;
+      transform: scale(0.92);
+      animation: sloganIn 1.2s ease forwards;
+      animation-delay: 2.8s;
     }
 
-    .line {
-      width: 80px;
-      height: 4px;
-      background: #7bbf62;
-      border-radius: 10px;
-      margin: 20px auto;
+    @keyframes textIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes sloganIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+
+      70% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .footer {
       margin-top: 30px;
       font-size: 13px;
       color: #8b968c;
+      opacity: 0;
+      animation: textIn 1s ease forwards;
+      animation-delay: 3.3s;
     }
   </style>
 </head>
@@ -98,13 +213,22 @@
 
   <div class="card">
 
-    <div class="leaf">🌿</div>
+    <div class="leaves">
+      <span class="leaf">🍃</span>
+      <span class="leaf">🌿</span>
+      <span class="leaf">🌿</span>
+      <span class="leaf">🍃</span>
+    </div>
 
-    <div class="logo">BONZAVİT</div>
+    <div class="logo">
+      BONZAVİT
+    </div>
 
     <div class="line"></div>
 
-    <h1>Yeni yaşın kutlu olsun!</h1>
+    <h1>
+      Yeni yaşın kutlu olsun!
+    </h1>
 
     <p class="message">
       Yeni yaşında sağlık, mutluluk, enerji
@@ -113,7 +237,8 @@
     </p>
 
     <div class="slogan">
-      DAHA FAZLA ENERJİ, DAHA İYİ BİR SEN :D
+      DAHA FAZLA ENERJİ,<br>
+      DAHA İYİ BİR SEN :D
     </div>
 
     <div class="footer">
