@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -29,90 +28,112 @@
     .card {
       width: 100%;
       max-width: 540px;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       border-radius: 30px;
-      padding: 45px 28px;
+      padding: 48px 28px;
       text-align: center;
-      box-shadow: 0 18px 50px rgba(45, 85, 50, 0.16);
+      box-shadow: 0 18px 50px rgba(45, 85, 50, 0.14);
       overflow: hidden;
     }
 
-    /* LOGO */
+    /* MARKA ALANI */
+    .brand {
+      position: relative;
+      display: inline-block;
+      padding: 35px 30px 25px;
+    }
+
     .logo {
+      position: relative;
+      z-index: 2;
       font-size: clamp(36px, 10vw, 48px);
       font-weight: 900;
       letter-spacing: 3px;
       color: #e87924;
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
       animation: logoIn 1s ease forwards;
-      animation-delay: 0.4s;
+      animation-delay: 0.3s;
     }
 
-    /* YAPRAKLAR */
-    .leaves {
-      height: 65px;
-      position: relative;
-      margin-bottom: 8px;
-    }
+    /*
+      İnce yaprak/filiz çizgileri.
+      Emoji yerine CSS kullanıldığı için renkleri
+      gerçekten yeşilden turuncuya dönüşebilir.
+    */
 
-    .leaf {
+    .sprout {
       position: absolute;
-      font-size: 34px;
+      width: 42px;
+      height: 42px;
       opacity: 0;
-      color: #72b85c;
-      animation:
-        leafAppear 1s ease forwards,
-        leafColor 2.5s ease forwards;
+      z-index: 1;
     }
 
-    .leaf:nth-child(1) {
-      left: 20%;
-      top: 25px;
-      transform: rotate(-25deg);
-      animation-delay: 0.7s, 2s;
+    .sprout::before,
+    .sprout::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 28px;
+      border: 2px solid #75b95e;
+      border-radius: 100% 0 100% 0;
+      background: transparent;
+      transition: border-color 1.5s ease;
     }
 
-    .leaf:nth-child(2) {
-      left: 37%;
-      top: 5px;
-      transform: rotate(-8deg);
-      animation-delay: 0.9s, 2.2s;
+    .sprout::before {
+      left: 4px;
+      top: 8px;
+      transform: rotate(-32deg);
     }
 
-    .leaf:nth-child(3) {
-      right: 37%;
-      top: 5px;
-      transform: rotate(8deg);
-      animation-delay: 1.1s, 2.4s;
+    .sprout::after {
+      right: 4px;
+      top: 0;
+      transform: rotate(32deg);
     }
 
-    .leaf:nth-child(4) {
-      right: 20%;
-      top: 25px;
-      transform: rotate(25deg);
-      animation-delay: 1.3s, 2.6s;
+    .sprout.one {
+      left: -5px;
+      top: 12px;
+      transform: rotate(-25deg) scale(0.7);
+      animation: sproutIn 1s ease forwards;
+      animation-delay: 0.9s;
     }
 
-    @keyframes leafAppear {
-      from {
-        opacity: 0;
-        transform: scale(0.2) translateY(15px) rotate(0deg);
-      }
-
-      to {
-        opacity: 1;
-      }
+    .sprout.two {
+      right: -5px;
+      top: 12px;
+      transform: rotate(25deg) scale(0.7);
+      animation: sproutIn 1s ease forwards;
+      animation-delay: 1.1s;
     }
 
-    @keyframes leafColor {
-      from {
-        color: #72b85c;
-      }
+    .sprout.three {
+      left: 10px;
+      bottom: 0;
+      transform: rotate(-45deg) scale(0.6);
+      animation: sproutIn 1s ease forwards;
+      animation-delay: 1.3s;
+    }
 
-      to {
-        color: #e87924;
-      }
+    .sprout.four {
+      right: 10px;
+      bottom: 0;
+      transform: rotate(45deg) scale(0.6);
+      animation: sproutIn 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    /* Yeşil → turuncu */
+    .brand.orange .sprout::before,
+    .brand.orange .sprout::after {
+      border-color: #e87924;
+    }
+
+    .brand.orange .sprout {
+      transition: color 1.5s ease;
     }
 
     @keyframes logoIn {
@@ -122,20 +143,47 @@
       }
     }
 
-    /* AYIRICI ÇİZGİ */
+    @keyframes sproutIn {
+      from {
+        opacity: 0;
+        transform: scale(0.2) rotate(0deg);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* RENK DÖNÜŞÜMÜ */
+    .brand.orange {
+      animation: orangeStart 1.5s ease forwards;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes orangeStart {
+      from {
+        filter: none;
+      }
+
+      to {
+        filter: none;
+      }
+    }
+
+    /* AYIRICI */
     .line {
       width: 0;
-      height: 4px;
+      height: 3px;
       background: #7bbf62;
       border-radius: 10px;
-      margin: 20px auto;
+      margin: 8px auto 22px;
       animation: lineGrow 1s ease forwards;
-      animation-delay: 1.5s;
+      animation-delay: 1.8s;
     }
 
     @keyframes lineGrow {
       to {
-        width: 85px;
+        width: 75px;
       }
     }
 
@@ -145,9 +193,9 @@
       color: #285c34;
       margin: 18px 0 12px;
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
       animation: textIn 1s ease forwards;
-      animation-delay: 1.8s;
+      animation-delay: 2.1s;
     }
 
     /* MESAJ */
@@ -158,7 +206,7 @@
       margin-bottom: 28px;
       opacity: 0;
       animation: textIn 1s ease forwards;
-      animation-delay: 2.1s;
+      animation-delay: 2.4s;
     }
 
     /* SLOGAN */
@@ -169,9 +217,9 @@
       color: #e87924;
       margin-top: 28px;
       opacity: 0;
-      transform: scale(0.92);
+      transform: scale(0.94);
       animation: sloganIn 1.2s ease forwards;
-      animation-delay: 2.8s;
+      animation-delay: 2.9s;
     }
 
     @keyframes textIn {
@@ -184,12 +232,12 @@
     @keyframes sloganIn {
       0% {
         opacity: 0;
-        transform: scale(0.92);
+        transform: scale(0.94);
       }
 
       70% {
         opacity: 1;
-        transform: scale(1.04);
+        transform: scale(1.03);
       }
 
       100% {
@@ -204,7 +252,7 @@
       color: #8b968c;
       opacity: 0;
       animation: textIn 1s ease forwards;
-      animation-delay: 3.3s;
+      animation-delay: 3.4s;
     }
   </style>
 </head>
@@ -213,15 +261,17 @@
 
   <div class="card">
 
-    <div class="leaves">
-      <span class="leaf">🍃</span>
-      <span class="leaf">🌿</span>
-      <span class="leaf">🌿</span>
-      <span class="leaf">🍃</span>
-    </div>
+    <div class="brand" id="brand">
 
-    <div class="logo">
-      BONZAVİT
+      <div class="sprout one"></div>
+      <div class="sprout two"></div>
+      <div class="sprout three"></div>
+      <div class="sprout four"></div>
+
+      <div class="logo">
+        BONZAVİT
+      </div>
+
     </div>
 
     <div class="line"></div>
@@ -246,6 +296,16 @@
     </div>
 
   </div>
+
+  <script>
+    /*
+      Yaprakların yeşilden turuncuya dönüşmesini
+      animasyonun sonunda başlatıyoruz.
+    */
+    setTimeout(function () {
+      document.getElementById("brand").classList.add("orange");
+    }, 2200);
+  </script>
 
 </body>
 </html>
