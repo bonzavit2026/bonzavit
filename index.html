@@ -56,7 +56,7 @@
       animation-delay: 0.3s;
     }
 
-    /* SADE YAPRAK/FİLİZLER */
+    /* SADE FİLİZLER */
     .sprout {
       position: absolute;
       width: 42px;
@@ -172,10 +172,10 @@
       animation-delay: 2.1s;
     }
 
-    /* DOĞUM GÜNÜ MESAJI */
+    /* MESAJ KUTUSU */
     .message-box {
       margin-top: 20px;
-      padding: 22px 20px;
+      padding: 24px 20px;
       border-radius: 20px;
       background: #f8fbf6;
       border: 1px solid rgba(123, 191, 98, 0.25);
@@ -185,10 +185,59 @@
       animation-delay: 2.4s;
     }
 
-    .message {
-      font-size: 16px;
-      line-height: 1.75;
+    .message-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #285c34;
+      margin-bottom: 18px;
+    }
+
+    /* MESAJI OKU BUTONU */
+    .read-button {
+      border: none;
+      background: #e87924;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .read-button:active {
+      transform: scale(0.96);
+    }
+
+    /* UZUN MESAJ */
+    .long-message {
+      display: none;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .long-message.open {
+      display: block;
+      animation: messageOpen 0.7s ease forwards;
+    }
+
+    .long-message p {
+      font-size: 15px;
+      line-height: 1.8;
       color: #536657;
+      margin-bottom: 20px;
+    }
+
+    @keyframes messageOpen {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* SLOGAN */
@@ -276,31 +325,20 @@
 
     <div class="message-box">
 
-      <p class="message">
-        Yeni yaşında sağlık, mutluluk, enerji
-        ve birbirinden güzel anılar seninle olsun.
-        Her yeni gün sana yepyeni bir güzellik getirsin.
-      </p>
+      <div class="message-title">
+        Sana bir mesajımız var...
+      </div>
 
-    </div>
+      <button class="read-button" onclick="openMessage()">
+        Mesajı oku
+      </button>
 
-    <div class="slogan">
-      DAHA FAZLA ENERJİ,<br>
-      DAHA İYİ BİR SEN :D
-    </div>
+      <div class="long-message" id="longMessage">
 
-    <div class="final">
-      Sana özel hazırlanmıştır.
-      <span class="mini-logo">BONZAVİT</span>
-    </div>
+        <p>
+          Unutacağımızı sandın değil mi? Hiç sanmıyorum. Dün geceden beri ne yapsam diye düşünüyordum. Aklıma birçok şey gelse de en sağlıklı ve dengeli olanını tercih ettim. Geç kalma konusunda haklısın. Ne yazık ki bu konuda zamanla pek iyi anlaşamadık. Zaman demişken seninle geçirdiğimiz zamanları, biriktirdiğimiz birçok anıyı düşününce üstündeki tozundan etrafındaki yosunu, pasına kadar arkadaşlığımız tıpkı bir gemi gibiydi. Bu gemide uzaydan veya dünyadan deniz görmemiş dostlarınla üstesinden geldiğin hırçın dalgalar da problemler de oldu. Zaman zaman fırtınalı havalarda sallandık, savrulduk fakat hiç battığımızı ve dibi boyladığımızı görmedim.
+        </p>
 
-  </div>
-
-  <script>
-    setTimeout(function () {
-      document.getElementById("brand").classList.add("orange");
-    }, 2200);
-  </script>
-
-</body>
-</html>
+        <p>
+          Elbette, aynı gemide birbirinden farklı üç hayat olsa da yer yer kesiştiğimiz ve kavuştuğumuz bu yolda iyi ki de denk gelmişiz demesi bizim için fazla mı duygusaldır bilemem. Ama iki böcekten, bir çiçekten oluşmuş dostluğun şu 4 yıllık boyunca yaçıyor, yaşatıyor olmamız benim için çok değerli. Eminim sizler için de öyle. Bazen sessizlikler olsa da eskilerin gürültüsü hâlâ kulaklarımda yankılanmakta.
+        </
